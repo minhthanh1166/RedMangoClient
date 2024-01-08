@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { SD_Roles } from "../Utility/SD";
+import { MainLoader } from "../Components/Page/Common";
 
 const withAdminAuth = (WrappedComponent: React.ComponentType) => {
   return (props: any) => {
     const navigate = useNavigate();
     const accessToken = localStorage.getItem("token") ?? "";
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       const checkAdminAuth = () => {
@@ -21,10 +23,15 @@ const withAdminAuth = (WrappedComponent: React.ComponentType) => {
           // Navigate to the login page if there is no access token
           navigate("/login");
         }
+        setLoading(false);
       };
 
       checkAdminAuth();
     }, [accessToken, navigate]);
+
+    if (loading) {
+      return <MainLoader />;
+    }
 
     // Render the wrapped component with the provided props
     return <WrappedComponent {...props} />;

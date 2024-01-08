@@ -34,6 +34,7 @@ function Header() {
           <NavLink className="nav-link" aria-current="page" to="/">
             <img src={logo} style={{ height: "40px" }} className="m-1" />
           </NavLink>
+          <a className="navbar-brand" href="#">Red Mango</a>
           <button
             className="navbar-toggler"
             type="button"
