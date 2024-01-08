@@ -34,7 +34,7 @@ function Header() {
           <NavLink className="nav-link" aria-current="page" to="/">
             <img src={logo} style={{ height: "40px" }} className="m-1" />
           </NavLink>
-          <a className="navbar-brand" href="#">Red Mango</a>
+          <NavLink className="navbar-brand" to="/">Red Mango</NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -53,11 +53,11 @@ function Header() {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page" to="/authorization">
                   Authorization
                 </NavLink>
-              </li>
+              </li> */}
               {userData.role == SD_Roles.ADMIN ? (
                 <li className="nav-item dropdown">
                   <a
